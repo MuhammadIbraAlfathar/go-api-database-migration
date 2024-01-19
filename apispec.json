@@ -84,7 +84,7 @@
         }
       }
     },
-    "/categories/{caregoryId}" : {
+    "/categories/{categoryId}" : {
       "get": {
         "security": [{
           "CategoryAuth" : []
