@@ -157,6 +157,38 @@
             }
           }
         }
+      },
+      "delete": {
+        "tags": ["Category API"],
+        "summary": "Delete category by id",
+        "description": "Delete category by id",
+        "parameters": [
+          {
+            "name" : "categoryId",
+            "in": "path",
+            "description": "Category Id"
+          }
+        ],
+        "responses": {
+          "200" : {
+            "description": "Success delete categories",
+            "content": {
+              "application/json" : {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code" : {
+                      "type": "number"
+                    },
+                    "status" : {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
       }
     }
   },
