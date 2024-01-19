@@ -11,6 +11,10 @@ import (
 type CategoryRepositoryImpl struct {
 }
 
+func NewCategoryRepositoryImpl() CategoryRepository {
+	return &CategoryRepositoryImpl{}
+}
+
 func (repository *CategoryRepositoryImpl) Save(ctx context.Context, tx *sql.Tx, category domain.Category) domain.Category {
 	query := "insert into category(name) values (?)"
 	result, err := tx.ExecContext(ctx, query, category.Name)
