@@ -3,6 +3,7 @@ package main
 import (
 	"github.com/MuhammadIbraAlfathar/go-restful-api/app"
 	"github.com/MuhammadIbraAlfathar/go-restful-api/controller"
+	"github.com/MuhammadIbraAlfathar/go-restful-api/exception"
 	"github.com/MuhammadIbraAlfathar/go-restful-api/repository"
 	"github.com/MuhammadIbraAlfathar/go-restful-api/service"
 	"github.com/go-playground/validator"
@@ -28,6 +29,8 @@ func main() {
 	router.POST("/api/categories", categoryController.Create)
 	router.PUT("/api/categories/:categoryId", categoryController.Update)
 	router.DELETE("/api/categories/:categoryId", categoryController.Delete)
+
+	router.PanicHandler = exception.ErrorHandler
 
 	server := http.Server{
 		Addr:    "localhost:3000",
