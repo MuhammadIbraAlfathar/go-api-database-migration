@@ -43,6 +43,12 @@ func InitializedHelloService() *HelloService {
 	return helloService
 }
 
+func InitializedConfiguration() *Configuration {
+	application := NewApplication()
+	configuration := application.Configuration
+	return configuration
+}
+
 // injector.go:
 
 var fooSet = wire.NewSet(NewFooRepository, NewFooService)

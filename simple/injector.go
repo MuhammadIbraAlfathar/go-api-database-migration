@@ -33,3 +33,9 @@ func InitializedHelloService() *HelloService {
 	wire.Build(helloSet, NewHelloService)
 	return nil
 }
+
+func InitializedConfiguration() *Configuration {
+	wire.Build(NewApplication, wire.FieldsOf(new(*Application), "Configuration"))
+
+	return nil
+}
