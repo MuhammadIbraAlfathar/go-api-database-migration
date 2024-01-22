@@ -1,33 +1,31 @@
 package main
 
 import (
-	"github.com/MuhammadIbraAlfathar/go-restful-api/app"
-	"github.com/MuhammadIbraAlfathar/go-restful-api/controller"
 	"github.com/MuhammadIbraAlfathar/go-restful-api/middleware"
-	"github.com/MuhammadIbraAlfathar/go-restful-api/repository"
-	"github.com/MuhammadIbraAlfathar/go-restful-api/service"
-	"github.com/go-playground/validator"
 	_ "github.com/go-sql-driver/mysql"
 	"net/http"
 )
 
+func NewServer(authMiddleware *middleware.AuthMiddleware) *http.Server {
+	return &http.Server{
+		Addr:    "localhost:3000",
+		Handler: authMiddleware,
+	}
+}
+
 func main() {
 
-	validate := validator.New()
+	//validate := validator.New()
+	//
+	//db := app.NewDB()
+	//
+	//categoryRepository := repository.NewCategoryRepositoryImpl()
+	//categoryService := service.NewCategoryServiceImpl(categoryRepository, db, validate)
+	//categoryController := controller.NewCategoryController(categoryService)
+	//router := app.NewRouter(categoryController)
+	//authMiddleware := middleware.NewAuthMiddleware(router)
 
-	db := app.NewDB()
-
-	categoryRepository := repository.NewCategoryRepositoryImpl()
-	categoryService := service.NewCategoryServiceImpl(categoryRepository, db, validate)
-	categoryController := controller.NewCategoryController(categoryService)
-
-	router := app.NewRouter(categoryController)
-
-	server := http.Server{
-		Addr:    "localhost:3000",
-		Handler: middleware.NewAuthMiddleware(router),
-	}
-
+	server := InitializedServer()
 	err := server.ListenAndServe()
 	panic(err)
 
