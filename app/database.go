@@ -16,4 +16,6 @@ func NewDB() *sql.DB {
 	db.SetConnMaxIdleTime(10 * time.Minute)
 
 	return db
+
+	// migrate -database "mysql://root@tcp(localhost:3306)/golang_database_migration" -path db/migration up
 }
