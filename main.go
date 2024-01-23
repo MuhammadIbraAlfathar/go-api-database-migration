@@ -15,16 +15,6 @@ func NewServer(authMiddleware *middleware.AuthMiddleware) *http.Server {
 
 func main() {
 
-	//validate := validator.New()
-	//
-	//db := app.NewDB()
-	//
-	//categoryRepository := repository.NewCategoryRepositoryImpl()
-	//categoryService := service.NewCategoryServiceImpl(categoryRepository, db, validate)
-	//categoryController := controller.NewCategoryController(categoryService)
-	//router := app.NewRouter(categoryController)
-	//authMiddleware := middleware.NewAuthMiddleware(router)
-
 	server := InitializedServer()
 	err := server.ListenAndServe()
 	panic(err)

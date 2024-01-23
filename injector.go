@@ -19,9 +19,7 @@ var categorySet = wire.NewSet(
 	repository.NewCategoryRepositoryImpl,
 	wire.Bind(new(repository.CategoryRepository), new(*repository.CategoryRepositoryImpl)),
 	service.NewCategoryServiceImpl,
-	//wire.Bind(new(service.CategoryService), new(service.CategoryServiceImpl)),
 	controller.NewCategoryController,
-	//wire.Bind(new(controller.CategoryController), new(controller.CategoryControllerImpl)),
 )
 
 func InitializedServer() *http.Server {
